@@ -1,0 +1,31 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/IshikoHash.sln;
+vs2013.solutionfile = ../VC12/IshikoHash.sln;
+
+library IshikoHash
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../Include/Ishiko/Hash;
+    
+    outputdir = ../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoHash-d;
+    }
+
+    headers
+    {
+        ../../Include/Ishiko/Hash.h
+
+        ../../Include/Ishiko/Hash/linkoptions.h
+        ../../Include/Ishiko/Hash/SHA512Hash.h
+    }
+
+    sources
+    {
+        ../../Source/SHA512Hash.cpp
+    }
+}
