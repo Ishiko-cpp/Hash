@@ -10,8 +10,14 @@ program IshikoHashTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/SHA512HashTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/SHA512HashTests.cpp
     }
 }
