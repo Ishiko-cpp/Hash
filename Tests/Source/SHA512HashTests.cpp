@@ -22,20 +22,25 @@
 
 #include "SHA512HashTests.h"
 #include "Ishiko/Hash/SHA512Hash.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddSHA512HashTests(TestHarness& theTestHarness)
 {
-    TestSequence& sha512HashtTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
+    TestSequence& sha512HashTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", SHA512HashCreationTest1, sha512HashtTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", SHA512HashCreationTest1, sha512HashTestSequence);
 
-    new HeapAllocationErrorsTest("value test 1", SHA512HashValueTest1, sha512HashtTestSequence);
-    new HeapAllocationErrorsTest("value test 2", SHA512HashValueTest2, sha512HashtTestSequence);
-    new HeapAllocationErrorsTest("value test 3", SHA512HashValueTest3, sha512HashtTestSequence);
+    new HeapAllocationErrorsTest("value test 1", SHA512HashValueTest1, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("value test 2", SHA512HashValueTest2, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("value test 3", SHA512HashValueTest3, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("value test 4", SHA512HashValueTest4, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("value test 5", SHA512HashValueTest5, sha512HashTestSequence);
 
-    new HeapAllocationErrorsTest("updateFromFile test 1", SHA512HashUpdateFromFileTest1, sha512HashtTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 2", SHA512HashUpdateFromFileTest2, sha512HashtTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 3", SHA512HashUpdateFromFileTest3, sha512HashtTestSequence);
+    new HeapAllocationErrorsTest("updateFromFile test 1", SHA512HashUpdateFromFileTest1, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("updateFromFile test 2", SHA512HashUpdateFromFileTest2, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("updateFromFile test 3", SHA512HashUpdateFromFileTest3, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("updateFromFile test 4", SHA512HashUpdateFromFileTest4, sha512HashTestSequence);
+    new HeapAllocationErrorsTest("updateFromFile test 5", SHA512HashUpdateFromFileTest5, sha512HashTestSequence);
 }
 
 TestResult::EOutcome SHA512HashCreationTest1()
@@ -141,6 +146,91 @@ TestResult::EOutcome SHA512HashValueTest3()
         0x33, 0x1B, 0x99, 0xDE, 0xC4, 0xB5, 0x43, 0x3A,
         0xC7, 0xD3, 0x29, 0xEE, 0xB6, 0xDD, 0x26, 0x54,
         0x5E, 0x96, 0xE5, 0x5B, 0x87, 0x4B, 0xE9, 0x09
+    };
+
+    // We don't use the operator == to make it easier to
+    // debug
+    bool equal = true;
+    for (size_t i = 0; i < 64; ++i)
+    {
+        if (value[i] != referenceValue[i])
+        {
+            equal = false;
+            break;
+        }
+    }
+
+    if (equal)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome SHA512HashValueTest4()
+{
+    Ishiko::Hash::SHA512Hash hash;
+    std::string text(1000000, 'a');
+    hash.update(text.c_str(), text.size());
+    const std::array<unsigned char, 64>& value = hash.value();
+
+    std::array<unsigned char, 64> referenceValue =
+    {
+        0xe7, 0x18, 0x48, 0x3d, 0x0c, 0xe7, 0x69, 0x64,
+        0x4e, 0x2e, 0x42, 0xc7, 0xbc, 0x15, 0xb4, 0x63,
+        0x8e, 0x1f, 0x98, 0xb1, 0x3b, 0x20, 0x44, 0x28,
+        0x56, 0x32, 0xa8, 0x03, 0xaf, 0xa9, 0x73, 0xeb,
+        0xde, 0x0f, 0xf2, 0x44, 0x87, 0x7e, 0xa6, 0x0a,
+        0x4c, 0xb0, 0x43, 0x2c, 0xe5, 0x77, 0xc3, 0x1b,
+        0xeb, 0x00, 0x9c, 0x5c, 0x2c, 0x49, 0xaa, 0x2e,
+        0x4e, 0xad, 0xb2, 0x17, 0xad, 0x8c, 0xc0, 0x9b
+    };
+
+    // We don't use the operator == to make it easier to
+    // debug
+    bool equal = true;
+    for (size_t i = 0; i < 64; ++i)
+    {
+        if (value[i] != referenceValue[i])
+        {
+            equal = false;
+            break;
+        }
+    }
+
+    if (equal)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome SHA512HashValueTest5()
+{
+    Ishiko::Hash::SHA512Hash hash;
+    std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
+    for (size_t i = 0; i < 16777216; ++i)
+    {
+        hash.update(text.c_str(), text.size());
+    }
+    const std::array<unsigned char, 64>& value = hash.value();
+
+    std::array<unsigned char, 64> referenceValue =
+    {
+        0xb4, 0x7c, 0x93, 0x34, 0x21, 0xea, 0x2d, 0xb1,
+        0x49, 0xad, 0x6e, 0x10, 0xfc, 0xe6, 0xc7, 0xf9,
+        0x3d, 0x07, 0x52, 0x38, 0x01, 0x80, 0xff, 0xd7,
+        0xf4, 0x62, 0x9a, 0x71, 0x21, 0x34, 0x83, 0x1d,
+        0x77, 0xbe, 0x60, 0x91, 0xb8, 0x19, 0xed, 0x35,
+        0x2c, 0x29, 0x67, 0xa2, 0xe2, 0xd4, 0xfa, 0x50,
+        0x50, 0x72, 0x3c, 0x96, 0x30, 0x69, 0x1f, 0x1a,
+        0x05, 0xa7, 0x28, 0x1d, 0xbe, 0x6c, 0x10, 0x86
     };
 
     // We don't use the operator == to make it easier to
@@ -275,6 +365,111 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest3(Test& test)
         }
     }
 
+    if (equal)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome SHA512HashUpdateFromFileTest4(Test& test)
+{
+    // Generate a file with a million 'a' characters in it
+    // We generate the file because we do not want to store such a large file in version control
+    std::string testFilePath = (test.environment().getTestOutputDirectory() / "milliona.txt").string();
+    boost::filesystem::remove(testFilePath);
+    std::ofstream testFile(testFilePath);
+    for (size_t i = 0; i < 100000; ++i)
+    {
+        testFile.write("aaaaaaaaaa", 10);
+    }
+    testFile.close();
+
+    Ishiko::Hash::SHA512Hash hash;
+    hash.updateFromFile(testFilePath);
+    const std::array<unsigned char, 64>& value = hash.value();
+
+    std::array<unsigned char, 64> referenceValue =
+    {
+        0xe7, 0x18, 0x48, 0x3d, 0x0c, 0xe7, 0x69, 0x64,
+        0x4e, 0x2e, 0x42, 0xc7, 0xbc, 0x15, 0xb4, 0x63,
+        0x8e, 0x1f, 0x98, 0xb1, 0x3b, 0x20, 0x44, 0x28,
+        0x56, 0x32, 0xa8, 0x03, 0xaf, 0xa9, 0x73, 0xeb,
+        0xde, 0x0f, 0xf2, 0x44, 0x87, 0x7e, 0xa6, 0x0a,
+        0x4c, 0xb0, 0x43, 0x2c, 0xe5, 0x77, 0xc3, 0x1b,
+        0xeb, 0x00, 0x9c, 0x5c, 0x2c, 0x49, 0xaa, 0x2e,
+        0x4e, 0xad, 0xb2, 0x17, 0xad, 0x8c, 0xc0, 0x9b
+    };
+
+    // We don't use the operator == to make it easier to
+    // debug
+    bool equal = true;
+    for (size_t i = 0; i < 64; ++i)
+    {
+        if (value[i] != referenceValue[i])
+        {
+            equal = false;
+            break;
+        }
+    }
+
+    boost::filesystem::remove(testFilePath);
+    if (equal)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome SHA512HashUpdateFromFileTest5(Test& test)
+{
+    // Generate a file with a million 'a' characters in it
+    // We generate the file because we do not want to store such a large file in version control
+    std::string testFilePath = (test.environment().getTestOutputDirectory() / "gigabyte.txt").string();
+    boost::filesystem::remove(testFilePath);
+    std::ofstream testFile(testFilePath);
+    std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
+    for (size_t i = 0; i < 16777216; ++i)
+    {
+        testFile.write(text.c_str(), text.size());
+    }
+    testFile.close();
+
+    Ishiko::Hash::SHA512Hash hash;
+    hash.updateFromFile(testFilePath);
+    const std::array<unsigned char, 64>& value = hash.value();
+
+    std::array<unsigned char, 64> referenceValue =
+    {
+        0xb4, 0x7c, 0x93, 0x34, 0x21, 0xea, 0x2d, 0xb1,
+        0x49, 0xad, 0x6e, 0x10, 0xfc, 0xe6, 0xc7, 0xf9,
+        0x3d, 0x07, 0x52, 0x38, 0x01, 0x80, 0xff, 0xd7,
+        0xf4, 0x62, 0x9a, 0x71, 0x21, 0x34, 0x83, 0x1d,
+        0x77, 0xbe, 0x60, 0x91, 0xb8, 0x19, 0xed, 0x35,
+        0x2c, 0x29, 0x67, 0xa2, 0xe2, 0xd4, 0xfa, 0x50,
+        0x50, 0x72, 0x3c, 0x96, 0x30, 0x69, 0x1f, 0x1a,
+        0x05, 0xa7, 0x28, 0x1d, 0xbe, 0x6c, 0x10, 0x86
+    };
+
+    // We don't use the operator == to make it easier to
+    // debug
+    bool equal = true;
+    for (size_t i = 0; i < 64; ++i)
+    {
+        if (value[i] != referenceValue[i])
+        {
+            equal = false;
+            break;
+        }
+    }
+
+    boost::filesystem::remove(testFilePath);
     if (equal)
     {
         return TestResult::ePassed;

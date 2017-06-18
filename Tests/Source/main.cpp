@@ -22,12 +22,15 @@
 
 #include "SHA512HashTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <boost/filesystem/operations.hpp>
 
 int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("IshikoHash");
 
     theTestHarness.environment().setTestDataDirectory("../../TestData");
+    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
+    boost::filesystem::create_directories("../../TestOutput");
 
     AddSHA512HashTests(theTestHarness);
 

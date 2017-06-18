@@ -33,8 +33,12 @@ TestResult::EOutcome SHA512HashCreationTest1();
 TestResult::EOutcome SHA512HashValueTest1();
 TestResult::EOutcome SHA512HashValueTest2();
 TestResult::EOutcome SHA512HashValueTest3();
+TestResult::EOutcome SHA512HashValueTest4();
+TestResult::EOutcome SHA512HashValueTest5();
 TestResult::EOutcome SHA512HashUpdateFromFileTest1(Test& test);
 TestResult::EOutcome SHA512HashUpdateFromFileTest2(Test& test);
 TestResult::EOutcome SHA512HashUpdateFromFileTest3(Test& test);
+TestResult::EOutcome SHA512HashUpdateFromFileTest4(Test& test);
+TestResult::EOutcome SHA512HashUpdateFromFileTest5(Test& test);
 
 #endif
