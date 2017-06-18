@@ -31,12 +31,24 @@ namespace Ishiko
 namespace Hash
 {
 
+/// This class holds a SHA-512 hash and functions to update it.
 class SHA512Hash
 {
 public:
+    /// The constructor.
     SHA512Hash();
 
+    /// Recomputes the value of the hash based on additional data.
+    /**
+        This function can be called multiple times to append more data each time.
+        @param data Pointer to the start of the buffer containing the data.
+        @param length Length of the buffer.
+    */
     void update(const char* data, size_t length);
+    /// Gets the current value of the hash based on the input data passed by the update function so far.
+    /**
+        @return A 512 bit array with the value of the hash.
+    */
     const std::array<unsigned char, 64>& value() const;
 
 private:
