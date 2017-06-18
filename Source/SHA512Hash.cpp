@@ -21,3 +21,11 @@
 */
 
 #include "SHA512Hash.h"
+
+namespace Ishiko
+{
+namespace Hash
+{
+
+}
+}

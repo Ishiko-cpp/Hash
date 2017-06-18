@@ -23,4 +23,16 @@
 #ifndef _ISHIKO_HASH_SHA512HASH_H_
 #define _ISHIKO_HASH_SHA512HASH_H_
 
+namespace Ishiko
+{
+namespace Hash
+{
+
+class SHA512Hash
+{
+};
+
+}
+}
+
 #endif

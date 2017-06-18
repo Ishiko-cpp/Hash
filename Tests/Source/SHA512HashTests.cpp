@@ -21,8 +21,17 @@
 */
 
 #include "SHA512HashTests.h"
+#include "Ishiko/Hash/SHA512Hash.h"
 
 void AddSHA512HashTests(TestHarness& theTestHarness)
 {
     TestSequence& sha512HashtTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", SHA512HashCreationTest1, sha512HashtTestSequence);
+}
+
+TestResult::EOutcome SHA512HashCreationTest1()
+{
+    Ishiko::Hash::SHA512Hash hash;
+    return TestResult::ePassed;
 }
