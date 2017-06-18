@@ -21,11 +21,21 @@
 */
 
 #include "SHA512Hash.h"
+#include <openssl/sha.h>
 
 namespace Ishiko
 {
 namespace Hash
 {
+
+const std::array<unsigned char, 64>& SHA512Hash::value() const
+{
+    SHA512_CTX context;
+    int err = SHA512_Init(&context);
+    //err = SHA512_Update(&context, (unsigned char*)input, length))
+    err = SHA512_Final(m_value.data(), &context);
+    return m_value;
+}
 
 }
 }

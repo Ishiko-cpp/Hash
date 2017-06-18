@@ -1,9 +1,12 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/OpenSSL.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/IshikoHash.sln;
 vs2013.solutionfile = ../VC12/IshikoHash.sln;
 
-library IshikoHash
+library IshikoHash : OpenSSL
 {
     archs = x86 x86_64;
 

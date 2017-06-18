@@ -28,10 +28,51 @@ void AddSHA512HashTests(TestHarness& theTestHarness)
     TestSequence& sha512HashtTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
 
     new HeapAllocationErrorsTest("Creation test 1", SHA512HashCreationTest1, sha512HashtTestSequence);
+
+    new HeapAllocationErrorsTest("value test 1", SHA512HashValueTest1, sha512HashtTestSequence);
 }
 
 TestResult::EOutcome SHA512HashCreationTest1()
 {
     Ishiko::Hash::SHA512Hash hash;
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome SHA512HashValueTest1()
+{
+    Ishiko::Hash::SHA512Hash hash;
+    const std::array<unsigned char, 64>& value = hash.value();
+   
+    std::array<unsigned char, 64> referenceValue =
+    {
+        0xcf, 0x83, 0xe1, 0x35, 0x7e, 0xef, 0xb8, 0xbd,
+        0xf1, 0x54, 0x28, 0x50, 0xd6, 0x6d, 0x80, 0x07,
+        0xd6, 0x20, 0xe4, 0x05, 0x0b, 0x57, 0x15, 0xdc,
+        0x83, 0xf4, 0xa9, 0x21, 0xd3, 0x6c, 0xe9, 0xce,
+        0x47, 0xd0, 0xd1, 0x3c, 0x5d, 0x85, 0xf2, 0xb0,
+        0xff, 0x83, 0x18, 0xd2, 0x87, 0x7e, 0xec, 0x2f,
+        0x63, 0xb9, 0x31, 0xbd, 0x47, 0x41, 0x7a, 0x81,
+        0xa5, 0x38, 0x32, 0x7a, 0xf9, 0x27, 0xda, 0x3e
+    };
+
+    // We don't use the operator == to make it easier to
+    // debug
+    bool equal = true;
+    for (size_t i = 0; i < 64; ++i)
+    {
+        if (value[i] != referenceValue[i])
+        {
+            equal = false;
+            break;
+        }
+    }
+
+    if (equal)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

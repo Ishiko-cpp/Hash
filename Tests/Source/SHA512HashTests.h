@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddSHA512HashTests(TestHarness& theTestHarness);
 
 TestResult::EOutcome SHA512HashCreationTest1();
+TestResult::EOutcome SHA512HashValueTest1();
 
 #endif

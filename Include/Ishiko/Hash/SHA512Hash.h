@@ -23,6 +23,8 @@
 #ifndef _ISHIKO_HASH_SHA512HASH_H_
 #define _ISHIKO_HASH_SHA512HASH_H_
 
+#include <array>
+
 namespace Ishiko
 {
 namespace Hash
@@ -30,9 +32,16 @@ namespace Hash
 
 class SHA512Hash
 {
+public:
+    const std::array<unsigned char, 64>& value() const;
+
+private:
+    mutable std::array<unsigned char, 64> m_value;
 };
 
 }
 }
+
+#include "linkoptions.h"
 
 #endif
