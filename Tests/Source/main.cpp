@@ -20,11 +20,14 @@
     IN THE SOFTWARE.
 */
 
+#include "SHA512HashTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("IshikoHash");
+
+    AddSHA512HashTests(theTestHarness);
 
     return theTestHarness.run();
 }

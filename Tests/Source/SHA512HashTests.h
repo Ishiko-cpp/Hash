@@ -23,4 +23,10 @@
 #ifndef _ISHIKO_TEST_HASH_SHA512HASHTESTS_H_
 #define _ISHIKO_TEST_HASH_SHA512HASHTESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddSHA512HashTests(TestHarness& theTestHarness);
+
 #endif

@@ -21,3 +21,8 @@
 */
 
 #include "SHA512HashTests.h"
+
+void AddSHA512HashTests(TestHarness& theTestHarness)
+{
+    TestSequence& sha512HashtTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
+}
