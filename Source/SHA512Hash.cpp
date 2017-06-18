@@ -21,6 +21,7 @@
 */
 
 #include "SHA512Hash.h"
+#include <fstream>
 
 namespace Ishiko
 {
@@ -35,6 +36,22 @@ SHA512Hash::SHA512Hash()
 void SHA512Hash::update(const char* data, size_t length)
 {
     int err = SHA512_Update(&m_context, (unsigned char*)data, length);
+}
+
+void SHA512Hash::updateFromFile(const std::string& filePath)
+{
+    std::ifstream input(filePath.c_str(), std::ios_base::in | std::ios_base::binary);
+    const size_t bufferSize = 10 * 1024;
+    char buffer[bufferSize];
+    while (input.read(buffer, bufferSize).good())
+    {
+        update(buffer, bufferSize);
+    }
+    if (!input.eof())
+    {
+        throw 0;
+    }
+    update(buffer, input.gcount());
 }
 
 const std::array<unsigned char, 64>& SHA512Hash::value() const

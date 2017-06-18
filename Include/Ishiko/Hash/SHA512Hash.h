@@ -45,6 +45,7 @@ public:
         @param length Length of the buffer.
     */
     void update(const char* data, size_t length);
+    void updateFromFile(const std::string& filePath);
     /// Gets the current value of the hash based on the input data passed by the update function so far.
     /**
         @return A 512 bit array with the value of the hash.

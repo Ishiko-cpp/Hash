@@ -27,6 +27,8 @@ int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("IshikoHash");
 
+    theTestHarness.environment().setTestDataDirectory("../../TestData");
+
     AddSHA512HashTests(theTestHarness);
 
     return theTestHarness.run();
