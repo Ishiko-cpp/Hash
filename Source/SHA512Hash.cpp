@@ -21,19 +21,25 @@
 */
 
 #include "SHA512Hash.h"
-#include <openssl/sha.h>
 
 namespace Ishiko
 {
 namespace Hash
 {
 
+SHA512Hash::SHA512Hash()
+{
+    int err = SHA512_Init(&m_context);
+}
+
+void SHA512Hash::update(const char* data, size_t length)
+{
+    int err = SHA512_Update(&m_context, (unsigned char*)data, length);
+}
+
 const std::array<unsigned char, 64>& SHA512Hash::value() const
 {
-    SHA512_CTX context;
-    int err = SHA512_Init(&context);
-    //err = SHA512_Update(&context, (unsigned char*)input, length))
-    err = SHA512_Final(m_value.data(), &context);
+    int err = SHA512_Final(m_value.data(), &m_context);
     return m_value;
 }
 

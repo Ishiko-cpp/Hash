@@ -31,5 +31,7 @@ void AddSHA512HashTests(TestHarness& theTestHarness);
 
 TestResult::EOutcome SHA512HashCreationTest1();
 TestResult::EOutcome SHA512HashValueTest1();
+TestResult::EOutcome SHA512HashValueTest2();
+TestResult::EOutcome SHA512HashValueTest3();
 
 #endif

@@ -23,6 +23,7 @@
 #ifndef _ISHIKO_HASH_SHA512HASH_H_
 #define _ISHIKO_HASH_SHA512HASH_H_
 
+#include <openssl/sha.h>
 #include <array>
 
 namespace Ishiko
@@ -33,9 +34,13 @@ namespace Hash
 class SHA512Hash
 {
 public:
+    SHA512Hash();
+
+    void update(const char* data, size_t length);
     const std::array<unsigned char, 64>& value() const;
 
 private:
+    mutable SHA512_CTX m_context;
     mutable std::array<unsigned char, 64> m_value;
 };
 
