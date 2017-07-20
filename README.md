@@ -1,4 +1,4 @@
-# Ishiko - Hash
+# Ishiko/C++ - Hash
 
 A library to calculate hashes. This library is a wrapper around OpenSSL.
 
