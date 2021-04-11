@@ -1,10 +1,4 @@
-*.dll
-*.opensdf
-*.sdf
-*.suo
-*.opendb
-Debug/
-Release/
-Lib/
-Documentation/Doxygen/html
-Documentation/Doxygen/latex
+/Lib/*
+!/Lib/README.md
+Makefiles/VC15/.vs/
+Makefiles/VC15/x64/
