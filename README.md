@@ -4,7 +4,7 @@ A library to calculate hashes. This library is a wrapper around OpenSSL.
 
 ## License
 
-Copyright (c) 2017 Xavier Leclercq
+Copyright (c) 2017-2021 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),

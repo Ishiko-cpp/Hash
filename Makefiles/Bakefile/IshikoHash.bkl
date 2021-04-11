@@ -1,18 +1,28 @@
-ishikopath = envvar("ISHIKO");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/OpenSSL.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/ThirdParty/Botan.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2017 vs2015 vs2013;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/IshikoHash.sln;
 vs2015.solutionfile = ../VC14/IshikoHash.sln;
 vs2013.solutionfile = ../VC12/IshikoHash.sln;
 
-library IshikoHash : OpenSSL
+library IshikoHash : Botan
 {
-    archs = x86 x86_64;
-
     includedirs += ../../Include/Ishiko/Hash;
     
-    outputdir = ../../Lib/$(arch);
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../Lib/$(arch);
+    }
 
     if ($(config) == Debug)
     {
