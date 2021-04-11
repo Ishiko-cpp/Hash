@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_HASH_SHA512HASH_H_
 #define _ISHIKO_HASH_SHA512HASH_H_
 
-#include <botan-2/botan/sha2_64.h>
+#include <botan/sha2_64.h>
 #include <array>
 
 namespace Ishiko
