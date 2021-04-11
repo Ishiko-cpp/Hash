@@ -1,57 +1,43 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
+    Copyright (c) 2017-2021 Xavier Leclercq
+    Released under the MIT License
+    See https://github.com/Ishiko-cpp/Hash/blob/main/LICENSE.txt
 */
 
 #include "SHA512HashTests.h"
 #include "Ishiko/Hash/SHA512Hash.h"
 #include <boost/filesystem/operations.hpp>
+#include <fstream>
 
-void AddSHA512HashTests(TestHarness& theTestHarness)
+using namespace Ishiko::Hash;
+using namespace Ishiko::Tests;
+
+SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "SHA512Hash tests", environment)
 {
-    TestSequence& sha512HashTestSequence = theTestHarness.appendTestSequence("SHA512Hash tests");
-
-    new HeapAllocationErrorsTest("Creation test 1", SHA512HashCreationTest1, sha512HashTestSequence);
-
-    new HeapAllocationErrorsTest("value test 1", SHA512HashValueTest1, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("value test 2", SHA512HashValueTest2, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("value test 3", SHA512HashValueTest3, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("value test 4", SHA512HashValueTest4, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("value test 5", SHA512HashValueTest5, sha512HashTestSequence);
-
-    new HeapAllocationErrorsTest("updateFromFile test 1", SHA512HashUpdateFromFileTest1, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 2", SHA512HashUpdateFromFileTest2, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 3", SHA512HashUpdateFromFileTest3, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 4", SHA512HashUpdateFromFileTest4, sha512HashTestSequence);
-    new HeapAllocationErrorsTest("updateFromFile test 5", SHA512HashUpdateFromFileTest5, sha512HashTestSequence);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("value test 1", ValueTest1);
+    append<HeapAllocationErrorsTest>("value test 2", ValueTest2);
+    append<HeapAllocationErrorsTest>("value test 3", ValueTest3);
+    append<HeapAllocationErrorsTest>("value test 4", ValueTest4);
+    append<HeapAllocationErrorsTest>("value test 5", ValueTest5);
+    append<HeapAllocationErrorsTest>("updateFromFile test 1", UpdateFromFileTest1);
+    append<HeapAllocationErrorsTest>("updateFromFile test 2", UpdateFromFileTest2);
+    append<HeapAllocationErrorsTest>("updateFromFile test 3", UpdateFromFileTest3);
+    append<HeapAllocationErrorsTest>("updateFromFile test 4", UpdateFromFileTest4);
+    append<HeapAllocationErrorsTest>("updateFromFile test 5", UpdateFromFileTest5);
 }
 
-TestResult::EOutcome SHA512HashCreationTest1()
+void SHA512HashTests::CreationTest1(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
-    return TestResult::ePassed;
+    SHA512Hash hash;
+
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashValueTest1()
+void SHA512HashTests::ValueTest1(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     const std::array<unsigned char, 64>& value = hash.value();
    
     std::array<unsigned char, 64> referenceValue =
@@ -78,17 +64,11 @@ TestResult::EOutcome SHA512HashValueTest1()
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashValueTest2()
+void SHA512HashTests::ValueTest2(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     const char* text = "abc";
@@ -119,17 +99,11 @@ TestResult::EOutcome SHA512HashValueTest2()
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashValueTest3()
+void SHA512HashTests::ValueTest3(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     const char* text = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
@@ -160,17 +134,11 @@ TestResult::EOutcome SHA512HashValueTest3()
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashValueTest4()
+void SHA512HashTests::ValueTest4(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     std::string text(1000000, 'a');
@@ -201,17 +169,11 @@ TestResult::EOutcome SHA512HashValueTest4()
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashValueTest5()
+void SHA512HashTests::ValueTest5(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
@@ -245,17 +207,11 @@ TestResult::EOutcome SHA512HashValueTest5()
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashUpdateFromFileTest1(Test& test)
+void SHA512HashTests::UpdateFromFileTest1(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "EmptyFile.txt").string());
@@ -285,17 +241,11 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest1(Test& test)
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashUpdateFromFileTest2(Test& test)
+void SHA512HashTests::UpdateFromFileTest2(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "abc.txt").string());
@@ -325,17 +275,11 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest2(Test& test)
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashUpdateFromFileTest3(Test& test)
+void SHA512HashTests::UpdateFromFileTest3(Test& test)
 {
     Ishiko::Hash::SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "smallfile.txt").string());
@@ -365,17 +309,11 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest3(Test& test)
         }
     }
 
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashUpdateFromFileTest4(Test& test)
+void SHA512HashTests::UpdateFromFileTest4(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
@@ -417,17 +355,12 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest4(Test& test)
     }
 
     boost::filesystem::remove(testFilePath);
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SHA512HashUpdateFromFileTest5(Test& test)
+void SHA512HashTests::UpdateFromFileTest5(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
@@ -470,12 +403,7 @@ TestResult::EOutcome SHA512HashUpdateFromFileTest5(Test& test)
     }
 
     boost::filesystem::remove(testFilePath);
-    if (equal)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_IF_NOT(equal);
+    ISHTF_PASS();
 }
