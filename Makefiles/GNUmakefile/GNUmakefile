@@ -37,8 +37,7 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      OPENSSL_ROOT_32  Path to the 32-bit OpenSSLinstallation
-#      OPENSSL_ROOT_64  Path to the 64-bit OpenSSL installation
+#      BOTAN_ROOT  Path to the Botan installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -65,10 +64,8 @@ endif
 # Configurable settings:
 # 
 
-# Path to the 32-bit OpenSSLinstallation
-OPENSSL_ROOT_32 ?= $(OPENSSL_32)
-# Path to the 64-bit OpenSSL installation
-OPENSSL_ROOT_64 ?= $(OPENSSL_64)
+# Path to the Botan installation
+BOTAN_ROOT ?= $(BOTAN)
 
 # ------------
 
@@ -79,7 +76,7 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,I
 	$(RANLIB) $@
 
 $(_builddir)IshikoHash_SHA512Hash.o: ../../Source/SHA512Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/Ishiko/Hash -std=c++11 ../../Source/SHA512Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOTAN_ROOT)/include/botan-2 -I../../Include/Ishiko/Hash -std=c++11 ../../Source/SHA512Hash.cpp
 
 clean:
 	rm -f $(_builddir)*.o
