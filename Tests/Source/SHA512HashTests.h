@@ -1,44 +1,31 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
+    Copyright (c) 2017-2021 Xavier Leclercq
+    Released under the MIT License
+    See https://github.com/Ishiko-cpp/Hash/blob/main/LICENSE.txt
 */
 
 #ifndef _ISHIKO_TEST_HASH_SHA512HASHTESTS_H_
 #define _ISHIKO_TEST_HASH_SHA512HASHTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/TestFramework/TestFrameworkCore.h>
 
-using namespace Ishiko::TestFramework;
+class SHA512HashTests : public Ishiko::Tests::TestSequence
+{
+public:
+    SHA512HashTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddSHA512HashTests(TestHarness& theTestHarness);
-
-TestResult::EOutcome SHA512HashCreationTest1();
-TestResult::EOutcome SHA512HashValueTest1();
-TestResult::EOutcome SHA512HashValueTest2();
-TestResult::EOutcome SHA512HashValueTest3();
-TestResult::EOutcome SHA512HashValueTest4();
-TestResult::EOutcome SHA512HashValueTest5();
-TestResult::EOutcome SHA512HashUpdateFromFileTest1(Test& test);
-TestResult::EOutcome SHA512HashUpdateFromFileTest2(Test& test);
-TestResult::EOutcome SHA512HashUpdateFromFileTest3(Test& test);
-TestResult::EOutcome SHA512HashUpdateFromFileTest4(Test& test);
-TestResult::EOutcome SHA512HashUpdateFromFileTest5(Test& test);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void ValueTest1(Ishiko::Tests::Test& test);
+    static void ValueTest2(Ishiko::Tests::Test& test);
+    static void ValueTest3(Ishiko::Tests::Test& test);
+    static void ValueTest4(Ishiko::Tests::Test& test);
+    static void ValueTest5(Ishiko::Tests::Test& test);
+    static void UpdateFromFileTest1(Ishiko::Tests::Test& test);
+    static void UpdateFromFileTest2(Ishiko::Tests::Test& test);
+    static void UpdateFromFileTest3(Ishiko::Tests::Test& test);
+    static void UpdateFromFileTest4(Ishiko::Tests::Test& test);
+    static void UpdateFromFileTest5(Ishiko::Tests::Test& test);
+};
 
 #endif
