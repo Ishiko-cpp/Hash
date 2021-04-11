@@ -7,8 +7,14 @@ jobs:
       - run:
           name: "Set ISHIKO_CPP environment variable and create directory"
           command: mkdir /Ishiko-cpp && echo 'export ISHIKO_CPP="/Ishiko-cpp"' >> $BASH_ENV
+      - run:
+          name: "Checkout Ishiko-cpp/botan dependency"
+          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/botan.git
       - checkout:
           path: /Ishiko-cpp/Hash
+      - run:
+          name: "Build Ishiko-cpp/botan dependency"
+          command: cd botan && python3 configure.py && make
       - run:
           name: Build
           command: cd /Ishiko-cpp/Hash/Makefiles/GNUmakefile && make
