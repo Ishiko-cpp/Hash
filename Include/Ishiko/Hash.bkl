@@ -1,5 +1,5 @@
-ishikopath = envvar("ISHIKO");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/OpenSSL.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Botan.bkl;
 
 setting ISHIKO_HASH_ROOT
 {
@@ -7,7 +7,7 @@ setting ISHIKO_HASH_ROOT
     default = '$(ISHIKO)/Hash';
 }
 
-template IshikoHash : OpenSSL
+template IshikoHash : Botan
 {
     includedirs += $(ISHIKO_HASH_ROOT)/Include;
 
