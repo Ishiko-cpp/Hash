@@ -11,14 +11,12 @@ vs2013.solutionfile = ../VC12/IshikoHashTests.sln;
 
 program IshikoHashTests : IshikoHash, IshikoTestFrameworkCore
 {
+    archs = x86 x86_64;
+
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-    }
-
-    if ($(toolset) != gnu)
-    {
-        archs = x86 x86_64;
+        libs += IshikoHash IshikoTestFrameworkCore IshikoProcess IshikoErrors boost_filesystem boost_system;
     }
 
     headers
