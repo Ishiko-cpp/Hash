@@ -7,6 +7,7 @@
 #include "SHA512HashTests.h"
 #include "Ishiko/Hash/SHA512Hash.h"
 #include <boost/filesystem/operations.hpp>
+#include <fstream>
 
 using namespace Ishiko::Hash;
 using namespace Ishiko::Tests;
