@@ -4,7 +4,7 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Botan.bkl;
 setting ISHIKO_HASH_ROOT
 {
     help = "Path to the Ishiko Hash installation";
-    default = '$(ISHIKO)/Hash';
+    default = '$(ISHIKO_CPP)/Hash';
 }
 
 template IshikoHash : Botan

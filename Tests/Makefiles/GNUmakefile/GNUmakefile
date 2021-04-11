@@ -80,7 +80,7 @@ ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/TestFramework
 # Path to the Botan installation
 BOTAN_ROOT ?= $(BOTAN)
 # Path to the Ishiko Hash installation
-ISHIKO_HASH_ROOT ?= $(ISHIKO)/Hash
+ISHIKO_HASH_ROOT ?= $(ISHIKO_CPP)/Hash
 
 # ------------
 
