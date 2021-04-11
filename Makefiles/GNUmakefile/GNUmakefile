@@ -37,7 +37,7 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOTAN_ROOT  Path to the Botan installation
+#      ISHIKO_CPP_BOTAN_ROOT  Path to the Botan installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -65,7 +65,7 @@ endif
 # 
 
 # Path to the Botan installation
-BOTAN_ROOT ?= $(BOTAN)
+ISHIKO_CPP_BOTAN_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOTAN)
 
 # ------------
 
@@ -76,7 +76,7 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,I
 	$(RANLIB) $@
 
 $(_builddir)IshikoHash_SHA512Hash.o: ../../Source/SHA512Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOTAN_ROOT)/include/botan-2 -I../../Include/Ishiko/Hash -std=c++11 ../../Source/SHA512Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../Include/Ishiko/Hash -std=c++11 ../../Source/SHA512Hash.cpp
 
 clean:
 	rm -f $(_builddir)*.o
