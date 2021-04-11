@@ -14,7 +14,7 @@ jobs:
           path: /Ishiko-cpp/Hash
       - run:
           name: "Build Ishiko-cpp/botan dependency"
-          command: cd /Ishiko-cpp/botan && python3 configure.py && make
+          command: cd /Ishiko-cpp/botan && python3 configure.py && make && make install
       - run:
           name: Build
           command: cd /Ishiko-cpp/Hash/Makefiles/GNUmakefile && make
