@@ -1,5 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Botan.bkl;
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/ThirdParty/Botan.bkl;
 
 setting ISHIKO_HASH_ROOT
 {

@@ -37,13 +37,13 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOOST_ROOT                     Path to the Boost installation
 #      ISHIKO_CPP_TEXT_ROOT           Path to the Ishiko/Text installation
 #      ISHIKO_CPP_ERRORS_ROOT         Path to the Ishiko Errors installation
 #      ISHIKO_CPP_PLATFORM_ROOT       Path to the Ishiko Platform installation
+#      ISHIKO_CPP_BOOST_ROOT          Path to the Boost installation
 #      ISHIKO_CPP_PROCESS_ROOT        Path to the Ishiko Process installation
 #      ISHIKO_CPP_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
-#      BOTAN_ROOT                     Path to the Botan installation
+#      ISHIKO_CPP_BOTAN_ROOT          Path to the Botan installation
 #      ISHIKO_HASH_ROOT               Path to the Ishiko Hash installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
@@ -65,20 +65,20 @@ endif
 # Configurable settings:
 # 
 
-# Path to the Boost installation
-BOOST_ROOT ?= $(BOOST)
 # Path to the Ishiko/Text installation
 ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/Text
 # Path to the Ishiko Errors installation
 ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
 # Path to the Ishiko Platform installation
 ISHIKO_CPP_PLATFORM_ROOT ?= $(ISHIKO_CPP)/Platform
+# Path to the Boost installation
+ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the Ishiko Process installation
 ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/Process
 # Path to the Ishiko TestFramework installation
 ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/TestFramework
 # Path to the Botan installation
-BOTAN_ROOT ?= $(BOTAN)
+ISHIKO_CPP_BOTAN_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOTAN)
 # Path to the Ishiko Hash installation
 ISHIKO_HASH_ROOT ?= $(ISHIKO_CPP)/Hash
 
@@ -87,13 +87,13 @@ ISHIKO_HASH_ROOT ?= $(ISHIKO_CPP)/Hash
 all: $(_builddir)IshikoHashTests
 
 $(_builddir)IshikoHashTests: $(_builddir)IshikoHashTests_main.o $(_builddir)IshikoHashTests_SHA512HashTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)IshikoHashTests_main.o $(_builddir)IshikoHashTests_SHA512HashTests.o -L$(BOTAN_ROOT)/lib -L$(ISHIKO_HASH_ROOT)/Lib -L$(ISHIKO_CPP_TEXT_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lbotan -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)IshikoHashTests_main.o $(_builddir)IshikoHashTests_SHA512HashTests.o -L$(ISHIKO_CPP_BOTAN_ROOT)/lib -L$(ISHIKO_HASH_ROOT)/Lib -L$(ISHIKO_CPP_TEXT_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lbotan -pthread
 
 $(_builddir)IshikoHashTests_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_HASH_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PLATFORM_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_HASH_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PLATFORM_ROOT)/Include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
 
 $(_builddir)IshikoHashTests_SHA512HashTests.o: ../../Source/SHA512HashTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_HASH_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PLATFORM_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/SHA512HashTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_HASH_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PLATFORM_ROOT)/Include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/SHA512HashTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o
