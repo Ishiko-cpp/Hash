@@ -4,7 +4,6 @@
     See https://github.com/Ishiko-cpp/Hash/blob/main/LICENSE.txt
 */
 
-#include "SHA512HashTests.h"
 #include <Ishiko/TestFramework/TestFrameworkCore.h>
 
 using namespace Ishiko::Tests;
@@ -17,7 +16,6 @@ int main(int argc, char* argv[])
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
     
     TestSequence& theTests = theTestHarness.tests();
-    theTests.append<SHA512HashTests>();
 
     return theTestHarness.run();
 }
