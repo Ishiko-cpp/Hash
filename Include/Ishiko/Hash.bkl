@@ -1,13 +1,10 @@
-ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/ThirdParty/Botan.bkl;
-
 setting ISHIKO_HASH_ROOT
 {
     help = "Path to the Ishiko Hash installation";
     default = '$(ISHIKO_CPP)/Hash';
 }
 
-template IshikoHash : Botan
+template IshikoHash
 {
     includedirs += $(ISHIKO_HASH_ROOT)/Include;
 
