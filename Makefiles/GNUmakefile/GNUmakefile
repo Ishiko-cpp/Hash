@@ -33,11 +33,6 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
-#
-# Additionally, this makefile is customizable with the following
-# settings:
-#
-#      ISHIKO_CPP_BOTAN_ROOT  Path to the Botan installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -50,40 +45,13 @@ _false :=
 _not    = $(if $(1),$(_false),$(_true_))
 _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 
-
-# The directory for the build files, may be overridden on make command line.
-builddir = .
-
-ifneq ($(builddir),.)
-_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
-_builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
-$(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
-endif
-
-# ------------
-# Configurable settings:
-# 
-
-# Path to the Botan installation
-ISHIKO_CPP_BOTAN_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOTAN)
-
-# ------------
-
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a: $(_builddir)IshikoHash_SHA512Hash.o
-	$(AR) rc $@ $(_builddir)IshikoHash_SHA512Hash.o
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a:
+	$(AR) rc $@ 
 	$(RANLIB) $@
 
-$(_builddir)IshikoHash_SHA512Hash.o: ../../Source/SHA512Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../Include/Ishiko/Hash -std=c++11 ../../Source/SHA512Hash.cpp
-
 clean:
-	rm -f $(_builddir)*.o
-	rm -f $(_builddir)*.d
 	rm -f ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
 
 .PHONY: all clean
-
-# Dependencies tracking:
--include $(_builddir)*.d
