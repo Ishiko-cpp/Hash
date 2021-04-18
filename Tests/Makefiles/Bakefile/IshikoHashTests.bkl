@@ -19,8 +19,14 @@ program IshikoHashTests : IshikoHash, IshikoTestFrameworkCore
         libs += IshikoHash IshikoTestFrameworkCore IshikoProcess IshikoErrors boost_filesystem boost_system;
     }
 
+    headers
+    {
+        ../../Source/FNV1aHashTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/FNV1aHashTests.cpp
     }
 }
