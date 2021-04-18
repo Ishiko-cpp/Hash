@@ -150,7 +150,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\FNV1aHash.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="..\..\Include\Ishiko\Hash.h" />
+    <ClInclude Include="..\..\Include\Ishiko\Hash\FNV1aHash.h" />
     <ClInclude Include="..\..\Include\Ishiko\Hash\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
