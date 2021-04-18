@@ -30,6 +30,12 @@ library IshikoHash
     {
         ../../Include/Ishiko/Hash.h
 
+        ../../Include/Ishiko/Hash/FNV1aHash.h
         ../../Include/Ishiko/Hash/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/FNV1aHash.cpp
     }
 }
