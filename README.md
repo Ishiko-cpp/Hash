@@ -1,6 +1,6 @@
 # Ishiko/C++ - Hash
 
-A library to calculate hashes. This library is a wrapper around OpenSSL.
+A library to calculate hashes.
 
 # Contents
 
@@ -27,5 +27,7 @@ None.
 ## License
 
 Copyright (c) 2017-2021 Xavier Leclercq
+
 Released under the MIT License
+
 See https://github.com/Ishiko-cpp/Hash/blob/main/LICENSE.txt
