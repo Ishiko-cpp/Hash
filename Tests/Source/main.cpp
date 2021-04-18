@@ -12,10 +12,7 @@ using namespace Ishiko::Tests;
 int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("IshikoHash");
-
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
-    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
-    
+ 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<FNV1aHashTests>();
 
