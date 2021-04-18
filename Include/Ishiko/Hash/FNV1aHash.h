@@ -7,6 +7,7 @@
 #ifndef _ISHIKO_HASH_FNV1AHASH_H_
 #define _ISHIKO_HASH_FNV1AHASH_H_
 
+#include <cstddef>
 #include <cstdint>
 
 namespace Ishiko

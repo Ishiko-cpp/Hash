@@ -5,7 +5,6 @@
 */
 
 #include "FNV1aHash.h"
-#include <cstddef>
 
 namespace Ishiko
 {
