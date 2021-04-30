@@ -16,6 +16,7 @@ FNV1aHashTests::FNV1aHashTests(const TestNumber& number, const TestEnvironment& 
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("update test 1", UpdateTest1);
     append<HeapAllocationErrorsTest>("update test 2", UpdateTest2);
+    append<HeapAllocationErrorsTest>("update test 3", UpdateTest3);
 }
 
 void FNV1aHashTests::ConstructorTest1(Ishiko::Tests::Test& test)
@@ -41,6 +42,17 @@ void FNV1aHashTests::UpdateTest2(Test& test)
     FNV1aHash hash;
 
     hash.update("The quick brown fox jumps over the lazy dog", 43);
+
+    ISHTF_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
+    ISHTF_PASS();
+}
+
+void FNV1aHashTests::UpdateTest3(Test& test)
+{
+    FNV1aHash hash;
+
+    std::string data = "The quick brown fox jumps over the lazy dog";
+    hash.update(data);
 
     ISHTF_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
     ISHTF_PASS();
