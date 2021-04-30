@@ -9,6 +9,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
 
 namespace Ishiko
 {
@@ -22,6 +23,7 @@ public:
     FNV1aHash();
 
     void update(const char* data, size_t length);
+    void update(const std::string& data);
 
     uint64_t value() const;
 

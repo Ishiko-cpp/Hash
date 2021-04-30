@@ -26,6 +26,11 @@ void FNV1aHash::update(const char* data, size_t length)
     }
 }
 
+void FNV1aHash::update(const std::string& data)
+{
+    update(data.data(), data.size());
+}
+
 uint64_t FNV1aHash::value() const
 {
     return m_value;

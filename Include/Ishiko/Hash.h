@@ -7,6 +7,8 @@
 #ifndef _ISHIKO_HASH_H_
 #define _ISHIKO_HASH_H_
 
+#include "Hash/FNV1aHash.h"
+
 #include "linkoptions.h"
 
 #endif
