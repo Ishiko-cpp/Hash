@@ -1,14 +1,14 @@
-# Ishiko/C++ - hash
+# Ishiko/C++ Hash
 
 A library to calculate hashes.
 
 # Contents
 
-- Include - Directory containing the public headers for the project.
-- Lib - Directory where the build process puts the compiled libraries.
-- Makefiles - The makefiles used to build the project
-- Source - The source code for the project.
-- Tests - The tests for the project.
+- build: the makefiles used to build the project
+- include: directory containing the public headers for the project.
+- lib: directory where the build process puts the compiled libraries.
+- src: the source code for the project.
+- tests: the tests for the project.
 
 # Project Status
 
