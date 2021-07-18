@@ -1,9 +1,9 @@
 toolsets = gnu vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/IshikoHash.sln;
-vs2015.solutionfile = ../VC14/IshikoHash.sln;
-vs2013.solutionfile = ../VC12/IshikoHash.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/IshikoHash.sln;
+vs2015.solutionfile = ../vc14/IshikoHash.sln;
+vs2013.solutionfile = ../vc12/IshikoHash.sln;
 
 library IshikoHash
 {
