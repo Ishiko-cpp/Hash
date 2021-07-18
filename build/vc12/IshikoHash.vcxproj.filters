@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\FNV1aHash.cpp">
+    <ClCompile Include="..\..\src\FNV1aHash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

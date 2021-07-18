@@ -10,11 +10,11 @@ template IshikoHash
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(ISHIKO_HASH_ROOT)/Lib;
+        libdirs += $(ISHIKO_HASH_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(ISHIKO_HASH_ROOT)/Lib/$(arch);
+        libdirs += $(ISHIKO_HASH_ROOT)/lib/$(arch);
     }
 }
