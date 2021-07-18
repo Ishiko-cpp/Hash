@@ -21,12 +21,12 @@ program IshikoHashTests : IshikoHash, IshikoTestsCore
 
     headers
     {
-        ../../Source/FNV1aHashTests.h
+        ../../src/FNV1aHashTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
-        ../../Source/FNV1aHashTests.cpp
+        ../../src/main.cpp
+        ../../src/FNV1aHashTests.cpp
     }
 }
