@@ -7,7 +7,7 @@ vs2013.solutionfile = ../VC12/IshikoHash.sln;
 
 library IshikoHash
 {
-    includedirs += ../../Include/Ishiko/Hash;
+    includedirs += ../../include/Ishiko/Hash;
     
     if ($(toolset) == gnu)
     {
@@ -28,10 +28,10 @@ library IshikoHash
 
     headers
     {
-        ../../Include/Ishiko/Hash.h
+        ../../include/Ishiko/Hash.h
 
-        ../../Include/Ishiko/Hash/FNV1aHash.h
-        ../../Include/Ishiko/Hash/linkoptions.h
+        ../../include/Ishiko/Hash/FNV1aHash.h
+        ../../include/Ishiko/Hash/linkoptions.h
     }
 
     sources

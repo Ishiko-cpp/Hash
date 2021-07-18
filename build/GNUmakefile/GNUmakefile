@@ -61,7 +61,7 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,I
 	$(RANLIB) $@
 
 $(_builddir)IshikoHash_FNV1aHash.o: ../../Source/FNV1aHash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/Ishiko/Hash -std=c++11 ../../Source/FNV1aHash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../include/Ishiko/Hash -std=c++11 ../../Source/FNV1aHash.cpp
 
 clean:
 	rm -f $(_builddir)*.o

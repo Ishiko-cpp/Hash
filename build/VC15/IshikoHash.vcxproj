@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\Include\Ishiko\Hash</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include\Ishiko\Hash</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\Include\Ishiko\Hash</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include\Ishiko\Hash</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\Include\Ishiko\Hash</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include\Ishiko\Hash</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\Include\Ishiko\Hash</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include\Ishiko\Hash</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -153,9 +153,9 @@
     <ClCompile Include="..\..\Source\FNV1aHash.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Include\Ishiko\Hash.h" />
-    <ClInclude Include="..\..\Include\Ishiko\Hash\FNV1aHash.h" />
-    <ClInclude Include="..\..\Include\Ishiko\Hash\linkoptions.h" />
+    <ClInclude Include="..\..\include\Ishiko\Hash.h" />
+    <ClInclude Include="..\..\include\Ishiko\Hash\FNV1aHash.h" />
+    <ClInclude Include="..\..\include\Ishiko\Hash\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

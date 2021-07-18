@@ -17,13 +17,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Include\Ishiko\Hash.h">
+    <ClInclude Include="..\..\include\Ishiko\Hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\Ishiko\Hash\FNV1aHash.h">
+    <ClInclude Include="..\..\include\Ishiko\Hash\FNV1aHash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\Ishiko\Hash\linkoptions.h">
+    <ClInclude Include="..\..\include\Ishiko\Hash\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

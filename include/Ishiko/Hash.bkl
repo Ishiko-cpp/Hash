@@ -1,12 +1,12 @@
 setting ISHIKO_HASH_ROOT
 {
     help = "Path to the Ishiko Hash installation";
-    default = '$(ISHIKO_CPP)/Hash';
+    default = '$(ISHIKO_CPP)/hash';
 }
 
 template IshikoHash
 {
-    includedirs += $(ISHIKO_HASH_ROOT)/Include;
+    includedirs += $(ISHIKO_HASH_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
