@@ -1,4 +1,4 @@
-# Ishiko/C++ - Hash
+# Ishiko/C++ - hash
 
 A library to calculate hashes.
 
@@ -12,7 +12,7 @@ A library to calculate hashes.
 
 # Project Status
 
-[![Ishiko-cpp](https://circleci.com/gh/Ishiko-cpp/Hash.svg?style=shield)](https://circleci.com/gh/Ishiko-cpp/Hash)
+[![ishiko-cpp](https://circleci.com/gh/ishiko-cpp/hash.svg?style=shield)](https://circleci.com/gh/ishiko-cpp/hash)
 
 This project is intended for use by its author only.
 
