@@ -17,15 +17,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\FNV1aHashTests.h">
+    <ClInclude Include="..\..\src\FNV1aHashTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp">
+    <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FNV1aHashTests.cpp">
+    <ClCompile Include="..\..\src\FNV1aHashTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
