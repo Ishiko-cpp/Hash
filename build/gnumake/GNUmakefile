@@ -54,9 +54,9 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
-all: ../Bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
+all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
 
-../Bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a: $(_builddir)IshikoHash_FNV1aHash.o
+../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a: $(_builddir)IshikoHash_FNV1aHash.o
 	$(AR) rc $@ $(_builddir)IshikoHash_FNV1aHash.o
 	$(RANLIB) $@
 
@@ -66,7 +66,7 @@ $(_builddir)IshikoHash_FNV1aHash.o: ../../src/FNV1aHash.cpp
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../Bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
+	rm -f ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoHash-d,IshikoHash).a
 
 .PHONY: all clean
 
