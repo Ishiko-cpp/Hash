@@ -23,8 +23,8 @@ void FNV1aHashTests::ConstructorTest1(Ishiko::Tests::Test& test)
 {
     FNV1aHash hash;
 
-    ISHTF_FAIL_IF_NEQ(hash.value(), 0xcbf29ce484222325ULL);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(hash.value(), 0xcbf29ce484222325ULL);
+    ISHIKO_PASS();
 }
 
 void FNV1aHashTests::UpdateTest1(Test& test)
@@ -33,8 +33,8 @@ void FNV1aHashTests::UpdateTest1(Test& test)
 
     hash.update("a", 1);
 
-    ISHTF_FAIL_IF_NEQ(hash.value(), 0xaf63dc4c8601ec8cULL);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(hash.value(), 0xaf63dc4c8601ec8cULL);
+    ISHIKO_PASS();
 }
 
 void FNV1aHashTests::UpdateTest2(Test& test)
@@ -43,8 +43,8 @@ void FNV1aHashTests::UpdateTest2(Test& test)
 
     hash.update("The quick brown fox jumps over the lazy dog", 43);
 
-    ISHTF_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
+    ISHIKO_PASS();
 }
 
 void FNV1aHashTests::UpdateTest3(Test& test)
@@ -54,6 +54,6 @@ void FNV1aHashTests::UpdateTest3(Test& test)
     std::string data = "The quick brown fox jumps over the lazy dog";
     hash.update(data);
 
-    ISHTF_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(hash.value(), 0xf3f9b7f5e7e47110ULL);
+    ISHIKO_PASS();
 }
