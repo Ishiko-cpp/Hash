@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2021 Xavier Leclercq
+    Copyright (c) 2021-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/hash/blob/main/LICENSE.txt
 */
@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_HASH_TESTS_FNV1AHASHTESTS_H_
 #define _ISHIKO_HASH_TESTS_FNV1AHASHTESTS_H_
 
-#include <Ishiko/Tests/Core.h>
+#include <Ishiko/Tests/Core.hpp>
 
 class FNV1aHashTests : public Ishiko::Tests::TestSequence
 {
