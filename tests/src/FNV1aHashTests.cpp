@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2021 Xavier Leclercq
+    Copyright (c) 2021-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/hash/blob/main/LICENSE.txt
 */
@@ -10,8 +10,8 @@
 using namespace Ishiko::Hash;
 using namespace Ishiko::Tests;
 
-FNV1aHashTests::FNV1aHashTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "FNV1aHash tests", environment)
+FNV1aHashTests::FNV1aHashTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "FNV1aHash tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("update test 1", UpdateTest1);
