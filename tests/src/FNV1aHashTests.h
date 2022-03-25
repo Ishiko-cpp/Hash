@@ -4,21 +4,21 @@
     See https://github.com/ishiko-cpp/hash/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_HASH_TESTS_FNV1AHASHTESTS_H_
-#define _ISHIKO_HASH_TESTS_FNV1AHASHTESTS_H_
+#ifndef _ISHIKO_CPP_HASH_TESTS_FNV1AHASHTESTS_H_
+#define _ISHIKO_CPP_HASH_TESTS_FNV1AHASHTESTS_H_
 
 #include <Ishiko/Tests/Core.hpp>
 
-class FNV1aHashTests : public Ishiko::Tests::TestSequence
+class FNV1aHashTests : public Ishiko::TestSequence
 {
 public:
-    FNV1aHashTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    FNV1aHashTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ConstructorTest1(Ishiko::Tests::Test& test);
-    static void UpdateTest1(Ishiko::Tests::Test& test);
-    static void UpdateTest2(Ishiko::Tests::Test& test);
-    static void UpdateTest3(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Test& test);
+    static void UpdateTest1(Ishiko::Test& test);
+    static void UpdateTest2(Ishiko::Test& test);
+    static void UpdateTest3(Ishiko::Test& test);
 };
 
 #endif
