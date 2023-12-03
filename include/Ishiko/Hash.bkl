@@ -1,7 +1,7 @@
 setting ISHIKO_HASH_ROOT
 {
     help = "Path to the Ishiko Hash installation";
-    default = '$(ISHIKO_CPP)/hash';
+    default = '$(ISHIKO_CPP_ROOT)/hash';
 }
 
 template IshikoHash
