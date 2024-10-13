@@ -14,7 +14,7 @@ A library to calculate hashes.
 
 [![ishiko-cpp](https://circleci.com/gh/ishiko-cpp/hash.svg?style=shield)](https://circleci.com/gh/ishiko-cpp/hash)
 
-This project is intended for use by its author only.
+This project is in early development and not ready for public use yet. 
 
 # Usage
 
@@ -26,6 +26,6 @@ None.
 
 ## License
 
-Copyright (c) 2017-2024 Xavier Leclercq\
-Released under the MIT License\
+Copyright (c) 2005-2024 Xavier Leclercq\
+This work is licensed under the Boost Software License 1.0\
 See https://github.com/ishiko-cpp/hash/blob/main/LICENSE.txt
